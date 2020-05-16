@@ -16,7 +16,7 @@ const Search = () => {
   }
 
   return (
-    <>
+    <div className="wrapper__right">
       <form className="search-form" onSubmit={getSearch}>
         <input className="search-bar" type="text" value={search} onChange={updateSearch} />
         <button className="search-button" type="submit">
@@ -24,7 +24,7 @@ const Search = () => {
         </button>
       </form>
       <SpotifyApi searchArtistName={query} />
-    </>
+    </div>
   )
 }
 
