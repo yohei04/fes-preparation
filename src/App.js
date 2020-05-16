@@ -7,22 +7,6 @@ const App = () => {
   return (
     <div>
       <Search />
-      {/* {(songs.length === 0)
-        ? <></Search>
-        // : <Search artistName={songs[0].artists[0].name} />
-        : <Search artistName={artistName} />
-      }
-      <div className="songs">
-        {songs.map((song, index) => (
-          <Song
-            rank={index}
-            songName={song.name}
-            image={song.album.images[2].url}
-            audio={song.preview_url}
-            spotifyLink={song.external_urls.spotify}
-          />
-        ))}
-      </div> */}
     </div>
   )
 }

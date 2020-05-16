@@ -15,12 +15,8 @@ const Search = () => {
     console.log(query)
   }
 
-  useEffect(() => {
-    
-  }, [query])
-
   return (
-    <div>
+    <>
       <form className="search-form" onSubmit={getSearch}>
         <input className="search-bar" type="text" value={search} onChange={updateSearch} />
         <button className="search-button" type="submit">
@@ -28,7 +24,7 @@ const Search = () => {
         </button>
       </form>
       <SpotifyApi searchArtistName={query} />
-    </div>
+    </>
   )
 }
 
