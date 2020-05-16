@@ -1,11 +1,12 @@
 import React from 'react'
-import './App.css';
-import { Search } from './components/index';
+import './App.scss';
+import { Search, FesArtistList } from './components/index';
 
 const App = () => {
 
   return (
-    <div>
+    <div className="wrapper">
+      <FesArtistList />
       <Search />
     </div>
   )
