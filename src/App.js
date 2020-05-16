@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './App.css';
-import Song from './Song';
+import { Song } from './components/index';
 
 const client_id = process.env.REACT_APP_SPOTIFY_API_ID; // Your client id
 const client_secret = process.env.REACT_APP_SPOTIFY_API_KEY; // Your secret
