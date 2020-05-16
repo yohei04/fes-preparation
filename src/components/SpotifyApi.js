@@ -49,7 +49,6 @@ const SpotifyApi = (props) => {
 
         request.get(options, function (error, response, body) {
           const spotifyArtistId = body.artists.items[0].id
-          console.log(spotifyArtistId)
 
           request.post(authOptions, function (error, response, body) {
             if (!error && response.statusCode === 200) {
@@ -80,7 +79,7 @@ const SpotifyApi = (props) => {
         <Song
           rank={index}
           songName={song.name}
-          image={song.album.images[2].url}
+          image={song.album.images[0].url}
           audio={song.preview_url}
           spotifyLink={song.external_urls.spotify}
         />

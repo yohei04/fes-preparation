@@ -5,7 +5,7 @@ const Song = (props) => {
     <div className="song">
       <h2>{props.rank + 1}位</h2>
       <h2>{props.songName}</h2>
-      <img src={props.image} alt=""/>
+      <img width="100px" height="100px" src={props.image} alt=""/>
       <video width="200px" height="80px" controls preload="none" name="media" src={props.audio} type="audio/mpeg">
         {/* <source src={props.audio} type="audio/mpeg"/> */}
       </video>

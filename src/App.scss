@@ -1,6 +1,14 @@
 .wrapper {
+  background-color: rgba(0, 0, 255, 0.151);
+  form {
+    text-align: center;
+  }
+}
+
+.container {
   display: flex;
+  justify-content: center;
   &__right {
-    margin: 0 auto;
+    margin-left: 5rem;
   }
 }
