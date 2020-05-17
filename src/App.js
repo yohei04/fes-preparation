@@ -1,13 +1,11 @@
 import React from 'react'
 import './App.scss';
 import { Search } from './components/index';
-import FesData  from './components/FesData';
 
 const App = () => {
 
   return (
     <div className="wrapper">
-      <FesData />
       <Search />
     </div>
   )

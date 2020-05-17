@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArtistList, SpotifyApi } from './index';
+import { ArtistList, SpotifyApi, FesData } from './index';
 
 const Search = () => {
   const [search, setSearch] = useState("");
@@ -29,7 +29,7 @@ const Search = () => {
       </form>
       <div className="container">
         <div className="container__left">
-          <ArtistList getArtistName={getArtistName}/>
+          <FesData getArtistName={getArtistName} />
         </div>
         <div className="container__right">
           <SpotifyApi searchArtistName={query} />
