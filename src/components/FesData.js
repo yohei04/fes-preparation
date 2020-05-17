@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { ArtistList } from './index'
 
 const FesData = (props) => {
-  const [artists, setArtists] = useState()
+  const [firstDayArtists, setFirstDayArtists] = useState()
+  const [secondDayArtists, setSecondDayArtists] = useState()
 
   useEffect(() => {
     getArtistsList();
-  }, artists)
+  }, firstDayArtists)
 
   function createElementFromHTML(html) {
     const tempEl = document.createElement('div');
@@ -20,18 +21,35 @@ const FesData = (props) => {
     const targetUrl = 'http://countdownjapan.jp/1920/lineup/artists/'
     const response = await fetch(proxyUrl + targetUrl)
     const data = await response.text()
-    const fullDaysLineupNode = createElementFromHTML(data)
-    const firstDayLineUp = [...fullDaysLineupNode[0].querySelectorAll(".c-artist__title")].map((node => node.textContent))
-    setArtists(firstDayLineUp)
+    const fullDaysArtistsNode = createElementFromHTML(data)
+    const firstDayArtistsNode = [...fullDaysArtistsNode[0].querySelectorAll(".c-artist__title")].map((node => node.textContent))
+    setFirstDayArtists(firstDayArtistsNode)
     // .catch(() => console.log("Can’t access " + targetUrl + " response. Blocked by browser?"))
   }
 
-  console.log(artists)
+  const collapseArtistList = () => {
+    const artistList = document.querySelector(".artistList")
+    artistList.style.display = artistList.style.display === 'none' ? '' : 'none';
+  }
+
+  console.log(firstDayArtists)
   return (
-    <div>
-      <p>12/28</p>
-      <ArtistList artists={artists} getArtistName={props.getArtistName} />
-    </div>
+    <ul className="wrapper__left">
+      <li className="year">2019</li>
+      <ul>
+        <li className="fesName">CDJ</li>
+        <ul>
+          <li className="date" onClick={collapseArtistList}>12/28</li>
+          <ul className="artistList" style={{ display: "none" }}>
+            <ArtistList artists={firstDayArtists} getArtistName={props.getArtistName} />
+          </ul>
+          <li className="date">12/29</li>
+          <li className="date">12/30</li>
+          <li className="date">12/31</li>
+        </ul>
+        <li className="fesName">RIJF</li>
+      </ul>
+    </ul>
   )
 }
 

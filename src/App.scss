@@ -12,6 +12,11 @@
   &__right {
     margin-left: 5rem;
   }
+  &__left {
+    .artistList {
+      // display: none;
+    }
+  }
 
   
 }
