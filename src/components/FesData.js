@@ -4,6 +4,8 @@ import { ArtistList } from './index'
 const FesData = (props) => {
   const [firstDayArtists, setFirstDayArtists] = useState()
   const [secondDayArtists, setSecondDayArtists] = useState()
+  const [thirdDayArtists, setThirdArtists] = useState()
+  const [fourthDayArtists, setFourthDayArtists] = useState()
 
   useEffect(() => {
     getArtistsList();
@@ -22,30 +24,44 @@ const FesData = (props) => {
     const response = await fetch(proxyUrl + targetUrl)
     const data = await response.text()
     const fullDaysArtistsNode = createElementFromHTML(data)
+
     const firstDayArtistsNode = [...fullDaysArtistsNode[0].querySelectorAll(".c-artist__title")].map((node => node.textContent))
     setFirstDayArtists(firstDayArtistsNode)
+    const secondDayArtistsNode = [...fullDaysArtistsNode[1].querySelectorAll(".c-artist__title")].map((node => node.textContent))
+    setSecondDayArtists(secondDayArtistsNode)
+    const thirdDayArtistsNode = [...fullDaysArtistsNode[2].querySelectorAll(".c-artist__title")].map((node => node.textContent))
+    setThirdArtists(thirdDayArtistsNode)
+    const fourthDayArtistsNode = [...fullDaysArtistsNode[3].querySelectorAll(".c-artist__title")].map((node => node.textContent))
+    setFourthDayArtists(fourthDayArtistsNode)
     // .catch(() => console.log("Can’t access " + targetUrl + " response. Blocked by browser?"))
   }
 
-  const collapseArtistList = () => {
-    const artistList = document.querySelector(".artistList")
-    artistList.style.display = artistList.style.display === 'none' ? '' : 'none';
+  const collapseArtistList = (e) => {
+    e.target.nextElementSibling.style.display = e.target.nextElementSibling.style.display === 'none' ? '' : 'none';
   }
 
-  console.log(firstDayArtists)
   return (
-    <ul className="wrapper__left">
+    <ul>
       <li className="year">2019</li>
       <ul>
         <li className="fesName">CDJ</li>
         <ul>
-          <li className="date" onClick={collapseArtistList}>12/28</li>
+          <li className="date" onDoubleClick={collapseArtistList}>12/28</li>
           <ul className="artistList" style={{ display: "none" }}>
             <ArtistList artists={firstDayArtists} getArtistName={props.getArtistName} />
           </ul>
-          <li className="date">12/29</li>
-          <li className="date">12/30</li>
-          <li className="date">12/31</li>
+          <li className="date" onDoubleClick={collapseArtistList}>12/29</li>
+          <ul className="artistList" style={{ display: "none" }}>
+            <ArtistList artists={secondDayArtists} getArtistName={props.getArtistName} />
+          </ul>
+          <li className="date" onDoubleClick={collapseArtistList}>12/30</li>
+          <ul className="artistList" style={{ display: "none" }}>
+            <ArtistList artists={thirdDayArtists} getArtistName={props.getArtistName} />
+          </ul>
+          <li className="date" onDoubleClick={collapseArtistList}>12/31</li>
+          <ul className="artistList" style={{ display: "none" }}>
+            <ArtistList artists={fourthDayArtists} getArtistName={props.getArtistName} />
+          </ul>
         </ul>
         <li className="fesName">RIJF</li>
       </ul>
