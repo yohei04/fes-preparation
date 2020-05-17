@@ -48,7 +48,13 @@ const SpotifyApi = (props) => {
         };
 
         request.get(options, function (error, response, body) {
-          const spotifyArtistId = body.artists.items[0].id
+          let spotifyArtistId = body.artists.items[0].id
+          if (spotifyArtistId === "1SJOL9HJ08YOn92lFcYf8a") {
+            spotifyArtistId = "7xx0gYr6iMecpDbSynNzWF" // SHANK
+          } else if (spotifyArtistId === "20UYCAvAHJ1WqrCElptD7O") {
+            spotifyArtistId = "6NlY4hC3DxmaCG2rSZv0fL" // KOTORI
+            console.log(spotifyArtistId)
+          };
 
           request.post(authOptions, function (error, response, body) {
             if (!error && response.statusCode === 200) {
@@ -79,7 +85,7 @@ const SpotifyApi = (props) => {
         <Song
           rank={index}
           songName={song.name}
-          image={song.album.images[0].url}
+          image={song.album.images[1].url}
           audio={song.preview_url}
           spotifyLink={song.external_urls.spotify}
         />
