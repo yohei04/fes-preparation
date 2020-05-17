@@ -8,7 +8,10 @@
 .container {
   display: flex;
   justify-content: center;
+  user-select: none;
   &__right {
     margin-left: 5rem;
   }
+
+  
 }
