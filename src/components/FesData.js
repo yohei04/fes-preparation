@@ -49,7 +49,7 @@ const FesData = (props) => {
         <li className="fesName">CDJ</li>
         <ul>
           <li className="date" onDoubleClick={collapseArtistList}>12/28</li>
-          <ul className="artistList" style={{ display: "block" }}>
+          <ul className="artistList" style={{ display: "none" }}>
             <ArtistList artists={firstDayArtists} getArtistName={props.getArtistName} />
           </ul>
           <li className="date" onDoubleClick={collapseArtistList}>12/29</li>

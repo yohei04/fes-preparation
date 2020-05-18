@@ -1,5 +1,6 @@
 import React from 'react'
 import './styles/App.scss';
+import './styles/reset.scss';
 import { Search } from './components/index';
 
 const App = () => {
