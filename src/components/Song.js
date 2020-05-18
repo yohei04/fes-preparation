@@ -9,8 +9,7 @@ const Song = (props) => {
   
   return (
     <div className="song">
-      <p>{props.rank + 1}位</p>
-      <p>{props.songName}</p>
+      <p><span>{props.rank + 1}位 </span><span>{props.songName}</span></p>
       <img width="100px" height="100px" src={props.image} alt="" />
       {props.audio === null
         ? <></>

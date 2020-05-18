@@ -49,11 +49,12 @@ const SpotifyApi = (props) => {
 
         request.get(options, function (error, response, body) {
           let spotifyArtistId = body.artists.items[0].id
+          console.log(spotifyArtistId)
+          // 似た名前が検索されるバグ回避
           if (spotifyArtistId === "1SJOL9HJ08YOn92lFcYf8a") {
             spotifyArtistId = "7xx0gYr6iMecpDbSynNzWF" // SHANK
           } else if (spotifyArtistId === "20UYCAvAHJ1WqrCElptD7O") {
             spotifyArtistId = "6NlY4hC3DxmaCG2rSZv0fL" // KOTORI
-            console.log(spotifyArtistId)
           };
 
           request.post(authOptions, function (error, response, body) {

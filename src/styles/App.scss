@@ -10,11 +10,16 @@
   justify-content: center;
   user-select: none;
   &__right {
+    width: 500px;
     margin-left: 5rem;
+    audio {
+      width: 50%;
+    }
   }
   &__left {
-    .artistList {
-      // display: none;
+    width: 300px;
+    li {
+      list-style: none;
     }
   }
 

@@ -33,11 +33,13 @@ const FesData = (props) => {
     setThirdArtists(thirdDayArtistsNode)
     const fourthDayArtistsNode = [...fullDaysArtistsNode[3].querySelectorAll(".c-artist__title")].map((node => node.textContent))
     setFourthDayArtists(fourthDayArtistsNode)
-    // .catch(() => console.log("Can’t access " + targetUrl + " response. Blocked by browser?"))
+    // .catch(() => console.log("Can’t access " + targetUrl + " response. Balocked by browser?"))
   }
 
   const collapseArtistList = (e) => {
-    e.target.nextElementSibling.style.display = e.target.nextElementSibling.style.display === 'none' ? '' : 'none';
+    // const artistLists = document.querySelectorAll(".artistList")
+    // artistLists.forEach(artistList => artistList.style.display = "none")
+    e.target.nextElementSibling.style.display = e.target.nextElementSibling.style.display === 'none' ? 'block' : 'none';
   }
 
   return (
@@ -47,7 +49,7 @@ const FesData = (props) => {
         <li className="fesName">CDJ</li>
         <ul>
           <li className="date" onDoubleClick={collapseArtistList}>12/28</li>
-          <ul className="artistList" style={{ display: "none" }}>
+          <ul className="artistList" style={{ display: "block" }}>
             <ArtistList artists={firstDayArtists} getArtistName={props.getArtistName} />
           </ul>
           <li className="date" onDoubleClick={collapseArtistList}>12/29</li>
