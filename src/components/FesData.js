@@ -48,19 +48,19 @@ const FesData = (props) => {
       <ul>
         <li className="fesName">CDJ</li>
         <ul>
-          <li className="date" onDoubleClick={collapseArtistList}>12/28</li>
+          <li className="date" onClick={collapseArtistList}>12/28</li>
           <ul className="artistList" style={{ display: "none" }}>
             <ArtistList artists={firstDayArtists} getArtistName={props.getArtistName} />
           </ul>
-          <li className="date" onDoubleClick={collapseArtistList}>12/29</li>
+          <li className="date" onClick={collapseArtistList}>12/29</li>
           <ul className="artistList" style={{ display: "none" }}>
             <ArtistList artists={secondDayArtists} getArtistName={props.getArtistName} />
           </ul>
-          <li className="date" onDoubleClick={collapseArtistList}>12/30</li>
+          <li className="date" onClick={collapseArtistList}>12/30</li>
           <ul className="artistList" style={{ display: "none" }}>
             <ArtistList artists={thirdDayArtists} getArtistName={props.getArtistName} />
           </ul>
-          <li className="date" onDoubleClick={collapseArtistList}>12/31</li>
+          <li className="date" onClick={collapseArtistList}>12/31</li>
           <ul className="artistList" style={{ display: "none" }}>
             <ArtistList artists={fourthDayArtists} getArtistName={props.getArtistName} />
           </ul>

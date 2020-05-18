@@ -1,6 +1,6 @@
 .wrapper {
-  padding: 1rem 0 3rem;
-  background-color: rgba(0, 0, 255, 0.151);
+  padding: 1rem 1rem 3rem;
+  background-color: lavender;
   .search-form {
     min-height: 10vh;
     display: flex;
@@ -23,24 +23,29 @@
     padding: 5px 20px;
     color: white;
     font-size: 1rem;
+    cursor: pointer;
   }
 }
 
 .container {
   display: flex;
   justify-content: center;
-  user-select: none;
+  // user-select: none;
   &__left {
-    width: 200px;
-    ul {
-      margin: .3rem .4rem;
+    width: 220px;
+    ul:not(:first-child) {
+      margin: .3rem .2rem 0 .4rem;
     }
     li {
       margin: .2rem 0;
+      word-wrap: break-word;
+      cursor: pointer;
+      &:hover {
+        opacity: .5;
+      }
     }
   }
   &__right {
-    width: 500px;
     .song {
       margin-bottom: 1rem;
       &__title{
@@ -48,12 +53,18 @@
         margin-bottom: .4rem;
       }
       img {
-        width: 100px;
-        height: 100px;
+        width: 150px;
+        height: 150px;
+      }
+      &__playerAndFullLink {
+        align-items: center;
       }
       audio {
-        width: 50px;
+        width: 60px;
         height: 20px;
+      }
+      &__fullSong {
+        margin-left: .2rem;
       }
     }
   }

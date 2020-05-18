@@ -13,7 +13,7 @@ const ArtistList = (props) => {
   return (
     <>
       {props.artists === undefined ? <></> : props.artists.map((artist) => (
-        <li onDoubleClick={props.getArtistName}>{artist}</li>
+        <li onClick={props.getArtistName}>{artist}</li>
       ))}
     </>
   )
