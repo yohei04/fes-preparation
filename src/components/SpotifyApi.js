@@ -40,7 +40,7 @@ const SpotifyApi = (props) => {
         // use the access token to access the Spotify Web API
         var token = body.access_token;
         var options = {
-          url: `https://api.spotify.com/v1/search?q=${props.searchArtistName}&type=artist`,
+          url: `https://api.spotify.com/v1/search?q=${props.searchArtistName}&type=artist&market=JP`,
           headers: {
             'Authorization': 'Bearer ' + token
           },
@@ -48,16 +48,17 @@ const SpotifyApi = (props) => {
         };
 
         request.get(options, function (error, response, body) {
-          let spotifyArtistId = body.artists.items[0].id
-          console.log(spotifyArtistId)
-          // 似た名前が検索されるバグ回避
-          if (spotifyArtistId === "1SJOL9HJ08YOn92lFcYf8a") {
-            spotifyArtistId = "7xx0gYr6iMecpDbSynNzWF" // SHANK
-          } else if (spotifyArtistId === "20UYCAvAHJ1WqrCElptD7O") {
-            spotifyArtistId = "6NlY4hC3DxmaCG2rSZv0fL" // KOTORI
-          } else if (spotifyArtistId === "7xjpPNWngnYl57VxpnbakE") {
-            spotifyArtistId = "6PmcG3GSDpsgO9yqAyaXBz" // ENTH
+          let spotifyArtistId;
+          // Spotifyで検索できないバンドのバグ回避
+          if (body.artists.items[0] === undefined) {
+            spotifyArtistId = ""
+          } else {
+            spotifyArtistId = body.artists.items[0].id
           };
+          // 似た名前が検索されるバグ回避
+          // if (spotifyArtistId === "1SJOL9HJ08YOn92lFcYf8a") {
+          //   spotifyArtistId = "7xx0gYr6iMecpDbSynNzWF" // SHANK
+          // }
 
           request.post(authOptions, function (error, response, body) {
             if (!error && response.statusCode === 200) {
@@ -81,18 +82,22 @@ const SpotifyApi = (props) => {
     });
   }
 
-  console.log(songs)
+  // console.log(songs)
   return (
     <div className="songs">
-      {songs.map((song, index) => (
-        <Song
-          rank={index}
-          songName={song.name}
-          image={song.album.images[1].url}
-          audio={song.preview_url}
-          spotifyLink={song.external_urls.spotify}
-        />
-      ))}
+      {/* バンド名からバンドが取得できない場合 */}
+      {(songs === undefined || songs.length === 0)
+        ? <p className="getArtistNameError">バンドの取得に失敗しました。<br />このバンドはまだSpotifyに登録されていないかもしれません。<br />もしくは僕の実装の問題です。<br />ごめん！！</p>
+        // <a href={process.env.REACT_APP_TWITTER_URL} target="_blank" rel="noopener noreferrer">開発者まで</a>
+        : songs.map((song, index) => (
+          <Song
+            rank={index}
+            songName={song.name}
+            image={song.album.images[1].url}
+            audio={song.preview_url}
+            spotifyLink={song.external_urls.spotify}
+          />
+        ))}
     </div>
   )
 }
