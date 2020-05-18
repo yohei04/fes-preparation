@@ -55,6 +55,8 @@ const SpotifyApi = (props) => {
             spotifyArtistId = "7xx0gYr6iMecpDbSynNzWF" // SHANK
           } else if (spotifyArtistId === "20UYCAvAHJ1WqrCElptD7O") {
             spotifyArtistId = "6NlY4hC3DxmaCG2rSZv0fL" // KOTORI
+          } else if (spotifyArtistId === "7xjpPNWngnYl57VxpnbakE") {
+            spotifyArtistId = "6PmcG3GSDpsgO9yqAyaXBz" // ENTH
           };
 
           request.post(authOptions, function (error, response, body) {

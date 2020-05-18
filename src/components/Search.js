@@ -22,7 +22,7 @@ const Search = () => {
   return (
     <>
       <form className="search-form" onSubmit={getSearch}>
-        <input className="search-bar" type="text" value={search} onChange={updateSearch} />
+        <input className="search-bar" type="text" placeholder="バンド名" value={search} onChange={updateSearch} />
         <button className="search-button" type="submit">
           検索
         </button>

@@ -9,8 +9,10 @@ const Song = (props) => {
   
   return (
     <div className="song">
-      <p><span>{props.rank + 1}位 </span><span>{props.songName}</span></p>
-      <img width="100px" height="100px" src={props.image} alt="" />
+      <h3 className="song__title"><span>{props.rank + 1}位 </span><span>{props.songName}</span></h3>
+      <div>
+        <img src={props.image} alt="" />
+      </div>
       {props.audio === null
         ? <></>
         : <audio controls preload="none" name="media" src={props.audio} type="audio/mpeg" onPlay={adjustAudioVol}></audio>

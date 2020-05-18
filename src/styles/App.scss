@@ -6,20 +6,23 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 1rem;
   }
 
   .search-bar {
     width: 50%;
     max-width: 300px;
     border: none;
-    padding: 11px;
+    padding: 7px;
+    font-size: 1rem;
   }
 
   .search-button {
     background: lightcoral;
     border: none;
-    padding: 10px 20px;
+    padding: 5px 20px;
     color: white;
+    font-size: 1rem;
   }
 }
 
@@ -27,21 +30,34 @@
   display: flex;
   justify-content: center;
   user-select: none;
-  &__right {
-    width: 500px;
-    audio {
-      width: 50%;
-    }
-  }
   &__left {
-    width: 300px;
+    width: 200px;
     ul {
-      margin: .3rem 1rem;
+      margin: .3rem .4rem;
     }
     li {
       margin: .2rem 0;
     }
   }
+  &__right {
+    width: 500px;
+    .song {
+      margin-bottom: 1rem;
+      &__title{
+        font-size: 1.2rem;
+        margin-bottom: .4rem;
+      }
+      img {
+        width: 100px;
+        height: 100px;
+      }
+      audio {
+        width: 50px;
+        height: 20px;
+      }
+    }
+  }
+
 
   
 }
