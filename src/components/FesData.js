@@ -8,9 +8,27 @@ const FesData = (props) => {
   const [fourthDayArtists, setFourthDayArtists] = useState()
 
   useEffect(() => {
-    getArtistsList();
-  }, firstDayArtists)
+    const getArtistsList = async () => {
+      const proxyUrl = 'https://cors-anywhere--clone.herokuapp.com/'
+      const targetUrl = 'http://countdownjapan.jp/1920/lineup/artists/'
+      const response = await fetch(proxyUrl + targetUrl)
+      const data = await response.text()
+      const fullDaysArtistsNode = createElementFromHTML(data)
 
+      const firstDayArtistsNode = [...fullDaysArtistsNode[0].querySelectorAll(".c-artist__title")].map((node => node.textContent))
+      setFirstDayArtists(firstDayArtistsNode)
+      const secondDayArtistsNode = [...fullDaysArtistsNode[1].querySelectorAll(".c-artist__title")].map((node => node.textContent))
+      setSecondDayArtists(secondDayArtistsNode)
+      const thirdDayArtistsNode = [...fullDaysArtistsNode[2].querySelectorAll(".c-artist__title")].map((node => node.textContent))
+      setThirdArtists(thirdDayArtistsNode)
+      const fourthDayArtistsNode = [...fullDaysArtistsNode[3].querySelectorAll(".c-artist__title")].map((node => node.textContent))
+      setFourthDayArtists(fourthDayArtistsNode)
+      // .catch(() => console.log("Can’t access " + targetUrl + " response. Balocked by browser?"))
+    };
+    getArtistsList();
+  }, [])
+
+  // getArtistsListで作ったtextをElementに変更
   function createElementFromHTML(html) {
     const tempEl = document.createElement('div');
     tempEl.innerHTML = html;
@@ -18,27 +36,7 @@ const FesData = (props) => {
     return lineupContents
   }
 
-  const getArtistsList = async () => {
-    const proxyUrl = 'https://cors-anywhere--clone.herokuapp.com/'
-    const targetUrl = 'http://countdownjapan.jp/1920/lineup/artists/'
-    const response = await fetch(proxyUrl + targetUrl)
-    const data = await response.text()
-    const fullDaysArtistsNode = createElementFromHTML(data)
-
-    const firstDayArtistsNode = [...fullDaysArtistsNode[0].querySelectorAll(".c-artist__title")].map((node => node.textContent))
-    setFirstDayArtists(firstDayArtistsNode)
-    const secondDayArtistsNode = [...fullDaysArtistsNode[1].querySelectorAll(".c-artist__title")].map((node => node.textContent))
-    setSecondDayArtists(secondDayArtistsNode)
-    const thirdDayArtistsNode = [...fullDaysArtistsNode[2].querySelectorAll(".c-artist__title")].map((node => node.textContent))
-    setThirdArtists(thirdDayArtistsNode)
-    const fourthDayArtistsNode = [...fullDaysArtistsNode[3].querySelectorAll(".c-artist__title")].map((node => node.textContent))
-    setFourthDayArtists(fourthDayArtistsNode)
-    // .catch(() => console.log("Can’t access " + targetUrl + " response. Balocked by browser?"))
-  }
-
   const collapseArtistList = (e) => {
-    // const artistLists = document.querySelectorAll(".artistList")
-    // artistLists.forEach(artistList => artistList.style.display = "none")
     e.target.nextElementSibling.style.display = e.target.nextElementSibling.style.display === 'none' ? 'block' : 'none';
   }
 
@@ -50,19 +48,19 @@ const FesData = (props) => {
         <ul>
           <li className="date" onClick={collapseArtistList}>12/28</li>
           <ul className="artistList" style={{ display: "none" }}>
-            <ArtistList artists={firstDayArtists} getArtistName={props.getArtistName} />
+            <ArtistList artistsNames={firstDayArtists} getArtistName={props.getArtistName} />
           </ul>
           <li className="date" onClick={collapseArtistList}>12/29</li>
           <ul className="artistList" style={{ display: "none" }}>
-            <ArtistList artists={secondDayArtists} getArtistName={props.getArtistName} />
+            <ArtistList artistsNames={secondDayArtists} getArtistName={props.getArtistName} />
           </ul>
           <li className="date" onClick={collapseArtistList}>12/30</li>
           <ul className="artistList" style={{ display: "none" }}>
-            <ArtistList artists={thirdDayArtists} getArtistName={props.getArtistName} />
+            <ArtistList artistsNames={thirdDayArtists} getArtistName={props.getArtistName} />
           </ul>
           <li className="date" onClick={collapseArtistList}>12/31</li>
           <ul className="artistList" style={{ display: "none" }}>
-            <ArtistList artists={fourthDayArtists} getArtistName={props.getArtistName} />
+            <ArtistList artistsNames={fourthDayArtists} getArtistName={props.getArtistName} />
           </ul>
         </ul>
         <li className="fesName">RIJF</li>
