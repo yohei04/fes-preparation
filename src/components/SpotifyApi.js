@@ -11,7 +11,7 @@ import { Song } from './index';
 
 const SpotifyApi = (props) => {
 
-  const [songs, setSongs] = useState(["empty"]);
+  const [songs, setSongs] = useState(["first"]); // 初回読み込みのバグ回避
 
   useEffect(() => {
     const client_id = process.env.REACT_APP_SPOTIFY_API_ID; // Your client id
@@ -49,13 +49,12 @@ const SpotifyApi = (props) => {
             // Spotifyで検索できないバンドのバグ回避
             if (body.artists.items[0] === undefined) {
               spotifyArtistId = ""
+              // 似た名前が検索されるバグ回避
+            } else if (body.artists.items[0].id === "661KPcCQNUUVjnqerOw38d") {
+              spotifyArtistId = "" // locofrank
             } else {
               spotifyArtistId = body.artists.items[0].id
             };
-            // 似た名前が検索されるバグ回避
-            // if (spotifyArtistId === "1SJOL9HJ08YOn92lFcYf8a") {
-            //   spotifyArtistId = "7xx0gYr6iMecpDbSynNzWF" // SHANK
-            // }
 
             request.post(authOptions, function (error, response, body) {
               if (!error && response.statusCode === 200) {
@@ -70,7 +69,13 @@ const SpotifyApi = (props) => {
                 };
 
                 request.get(options, function (error, response, body) {
-                  setSongs(body.tracks)
+                  if (body.tracks === undefined) {
+                    setSongs(["error"]) // Spotifyにバンドが登録されてない場合
+                  } else if (body.tracks.length === 0) {
+                    setSongs(["error"]) // バンドは登録されているが曲が登録されてない場合
+                  } else {
+                    setSongs(body.tracks)
+                  };
                 });
               }
             });
@@ -81,14 +86,14 @@ const SpotifyApi = (props) => {
     getSpotifyArtistInfo();
   }, [props.searchArtistName])
 
-  console.log(songs)
+  // console.log(songs)
 
-  if (songs[0] === "empty") {
+  if (songs[0] === "first") {
     return ""
   } else {
     return (
       <div className="songs">
-        {(songs === undefined || songs.length === 0) //バンド名からバンドが取得できない場合
+        {(songs[0] === "error") //バンド名からバンドが取得できない場合
           ? <p className="getArtistNameError">バンドの取得に失敗しました。<br />このバンドはまだSpotifyに登録されていないかもしれません。<br />もしくは僕の実装の問題です。<br />ごめん！！</p>
           // <a href={process.env.REACT_APP_TWITTER_URL} target="_blank" rel="noopener noreferrer">開発者まで</a>
           : songs.map((song, index) => (
