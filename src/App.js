@@ -1,16 +1,24 @@
 import React from 'react'
 import './styles/App.scss';
 import './styles/reset.scss';
-import { Search } from './components/index';
+import { Header, About, Search } from './components/index';
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 const App = () => {
 
   return (
-    <div className="wrapper">
-      <Search />
-    </div>
+    <Router>
+      <div className="wrapper">
+        <Header />
+        <Route exact path="/" component={Search} />
+        <Route path="/about" component={About} />
+        {/* <Search /> */}
+      </div>
+    </Router>
   )
 }
+
+
 
 export default App;
 

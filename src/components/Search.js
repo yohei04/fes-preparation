@@ -21,7 +21,7 @@ const Search = () => {
   
   return (
     <>
-      <form className="search-form" onSubmit={getSearch}>
+      <form className="search-form flex" onSubmit={getSearch}>
         <input className="search-bar" type="text" placeholder="バンド名" value={search} onChange={updateSearch} />
         <button className="search-button" type="submit">
           検索

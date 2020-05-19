@@ -6,7 +6,7 @@ const Song = (props) => {
     const audio = document.querySelector("audio");
     audio.volume = 0.1;
   }
-  
+  // console.log(props.audio)
   return (
     <div className="song">
       <h3 className="song__title"><span>{props.rank + 1}位 </span><span>{props.songName}</span></h3>

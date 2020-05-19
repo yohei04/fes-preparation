@@ -86,7 +86,7 @@ const SpotifyApi = (props) => {
     getSpotifyArtistInfo();
   }, [props.searchArtistName])
 
-  // console.log(songs)
+  console.log(songs)
 
   if (songs[0] === "first") {
     return ""
