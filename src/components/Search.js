@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { ArtistList, SpotifyApi, FesData } from './index';
+import React, { useState } from 'react';
+import { SpotifyApi, FesData } from './index';
 
 const Search = () => {
   const [search, setSearch] = useState("");
