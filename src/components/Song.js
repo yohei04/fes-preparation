@@ -4,7 +4,7 @@ const Song = (props) => {
 
   const adjustAudioVol = () => {
     const audio = document.querySelector("audio");
-    audio.volume = 0.3;
+    audio.volume = 0.1;
   }
   
   return (

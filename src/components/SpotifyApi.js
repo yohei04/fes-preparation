@@ -11,7 +11,7 @@ import { Song } from './index';
 
 const SpotifyApi = (props) => {
 
-  const [songs, setSongs] = useState([]);
+  const [songs, setSongs] = useState(["empty"]);
 
   useEffect(() => {
     const client_id = process.env.REACT_APP_SPOTIFY_API_ID; // Your client id
@@ -81,27 +81,29 @@ const SpotifyApi = (props) => {
     getSpotifyArtistInfo();
   }, [props.searchArtistName])
 
-  
-
   console.log(songs)
-  return (
-    <div className="songs">
-      {/* バンド名からバンドが取得できない場合 */}
-      {(songs === undefined || songs.length === 0)
-        ? <p className="getArtistNameError">バンドの取得に失敗しました。<br />このバンドはまだSpotifyに登録されていないかもしれません。<br />もしくは僕の実装の問題です。<br />ごめん！！</p>
-        // <a href={process.env.REACT_APP_TWITTER_URL} target="_blank" rel="noopener noreferrer">開発者まで</a>
-        : songs.map((song, index) => (
-          <Song
-            key={index}
-            rank={index}
-            songName={song.name}
-            image={song.album.images[1].url}
-            audio={song.preview_url}
-            spotifyLink={song.external_urls.spotify}
-          />
-        ))}
-    </div>
-  )
+
+  if (songs[0] === "empty") {
+    return ""
+  } else {
+    return (
+      <div className="songs">
+        {(songs === undefined || songs.length === 0) //バンド名からバンドが取得できない場合
+          ? <p className="getArtistNameError">バンドの取得に失敗しました。<br />このバンドはまだSpotifyに登録されていないかもしれません。<br />もしくは僕の実装の問題です。<br />ごめん！！</p>
+          // <a href={process.env.REACT_APP_TWITTER_URL} target="_blank" rel="noopener noreferrer">開発者まで</a>
+          : songs.map((song, index) => (
+            <Song
+              key={index}
+              rank={index}
+              songName={song.name}
+              image={song.album.images[1].url}
+              audio={song.preview_url}
+              spotifyLink={song.external_urls.spotify}
+            />
+          ))}
+      </div>
+    )
+  }
 }
 
 export default SpotifyApi

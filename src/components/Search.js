@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { SpotifyApi, FesData } from './index';
 
 const Search = () => {
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState("サカナクション");
   const [query, setQuery] = useState("サカナクション");
 
   const updateSearch = (e) => {

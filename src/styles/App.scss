@@ -1,5 +1,5 @@
 .wrapper {
-  padding: 1rem 1rem 3rem;
+  padding: 1rem .6rem 2rem;
   background-color: lavender;
   .search-form {
     min-height: 10vh;
@@ -32,13 +32,13 @@
   justify-content: center;
   // user-select: none;
   &__left {
-    width: 200px;
+    width: 280px;
+    word-break: break-all;
     ul:not(:first-child) {
       margin: .3rem .2rem 0 .4rem;
     }
     li {
-      margin: .2rem 0;
-      word-wrap: break-word;
+      margin: .5rem 0;
       cursor: pointer;
       &:hover {
         opacity: .5;
@@ -46,6 +46,7 @@
     }
   }
   &__right {
+    width: 250px;
     .song {
       margin-bottom: 1rem;
       &__title{
@@ -60,7 +61,7 @@
         align-items: center;
       }
       audio {
-        width: 60px;
+        width: 30px;
         height: 20px;
       }
       &__fullSong {
