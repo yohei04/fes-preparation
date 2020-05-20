@@ -1,0 +1,21 @@
+$break-pointSP: 680px;
+
+//スマホ用 画面サイズが「$break-point」まではここを読み込む
+@mixin mediaSP {
+  @media screen and (max-width:$break-pointSP) {
+    @content;
+  }
+}
+
+@mixin mediaTB {
+  @media screen and (min-width:$break-pointSP + 1px) {
+    @content;
+  }
+}
+
+// PC用 画面サイズが「$break-point」からはここを読み込む
+@mixin mediaPC {
+  @media screen and (min-width:$break-pointSP + 300px) {
+    @content;
+  }
+}

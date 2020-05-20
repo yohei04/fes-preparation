@@ -1,0 +1,13 @@
+.about {
+  text-align: center;
+  padding: 2rem 1.2rem;
+  .subTitle {
+    font-size: 1.2rem;
+    &:not(:first-child) {
+    margin-bottom: .6rem;
+    }
+  }
+  p {
+    margin-bottom: 0.4rem;
+  }
+}
