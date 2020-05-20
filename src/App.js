@@ -2,7 +2,7 @@ import React from 'react'
 import './styles/App.scss';
 import './styles/reset.scss';
 import { Header, About, Search } from './components/index';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { HashRouter as Router, Switch, Route } from 'react-router-dom'
 
 const App = () => {
 
@@ -10,9 +10,10 @@ const App = () => {
     <Router>
       <div className="wrapper">
         <Header />
-        <Route exact path="/" component={Search} />
-        <Route path="/about" component={About} />
-        {/* <Search /> */}
+        <Switch>
+          <Route exact path="/" component={Search} />
+          <Route path="/about" component={About} />
+        </Switch>
       </div>
     </Router>
   )
