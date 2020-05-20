@@ -1,5 +1,5 @@
 .wrapper {
-  background-color: lavender;
+  background-image: linear-gradient(to top, #cbf7de 0%, #f8f7b1);
   min-height: 100vh;
 }
 
@@ -87,6 +87,7 @@
       img {
         width: 130px;
         height: 130px;
+        vertical-align: bottom;
         @include mediaTB {
           width: 200px;
           height: 200px;

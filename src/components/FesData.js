@@ -44,7 +44,7 @@ const FesData = (props) => {
     <ul>
       <li className="year">2019</li>
       <ul>
-        <li className="fesName">CDJ</li>
+        <li className="fesName">CDJ <a href="http://countdownjapan.jp/1920/lineup/timetable/" target="_blank" rel="noopener noreferrer">タイムテーブル</a></li>
         <ul>
           <li className="date" onClick={collapseArtistList}>12/28</li>
           <ul className="artistList" style={{ display: "none" }}>
