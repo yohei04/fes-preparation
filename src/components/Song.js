@@ -1,12 +1,17 @@
 import React from 'react'
 
 const Song = (props) => {
-
+  
   const adjustAudioVol = () => {
-    const audio = document.querySelector("audio");
-    audio.volume = 0.1;
+    const audios = document.querySelectorAll("audio");
+    [...audios].forEach(audio => audio.volume = 0.3)
   }
-  // console.log(props.audio)
+
+  // const stopOtherAudio = () => {
+  //   const audios = document.querySelectorAll("audio");
+  //   [...audios].forEach(audio => audio.pause())
+  // }
+
   return (
     <div className="song">
       <h3 className="song__title"><span>{props.rank + 1}位 </span><span>{props.songName}</span></h3>
