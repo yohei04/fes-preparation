@@ -4,7 +4,7 @@ const Song = (props) => {
   
   const adjustAudioVol = () => {
     const audios = document.querySelectorAll("audio");
-    [...audios].forEach(audio => audio.volume = 0.3)
+    [...audios].forEach(audio => audio.volume = 0.1)
   }
 
   // const stopOtherAudio = () => {

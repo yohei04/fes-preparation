@@ -52,6 +52,8 @@ const SpotifyApi = (props) => {
               // 似た名前が検索されるバグ回避
             } else if (body.artists.items[0].id === "661KPcCQNUUVjnqerOw38d") {
               spotifyArtistId = "" // locofrank
+            } else if (body.artists.items[0].id === "7y97mc3bZRFXzT2szRM4L4") {
+              spotifyArtistId = "3srPc1Mytv5GmTWqsQuoXW" // フレデリック
             } else {
               spotifyArtistId = body.artists.items[0].id
             };
@@ -94,7 +96,7 @@ const SpotifyApi = (props) => {
     return (
       <div className="songs">
         {(songs[0] === "error") //バンド名からバンドが取得できない場合
-          ? <p className="getArtistNameError">バンドの取得に失敗しました。<br />このバンドはまだSpotifyに登録されていないかもしれません。<br />もしくは僕の実装の問題です。<br />ごめん！！</p>
+          ? <p className="getArtistNameError">バンドの取得に失敗しました。<br />このバンドはまだSpotifyに登録されていないかもしれません。<br />もしくは僕の実装の問題です。<br />すみません！！</p>
           // <a href={process.env.REACT_APP_TWITTER_URL} target="_blank" rel="noopener noreferrer">開発者まで</a>
           : songs.map((song, index) => (
             <Song
