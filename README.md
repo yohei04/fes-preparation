@@ -30,8 +30,9 @@ Spotifyでもアーティストの有名な曲は聞けますがフェスとは�
 
 
 ## 使用技術
-- react '16.13.1'
-- react-router
+- React '16.13.1'
+- React Hooks
+- React-router
 
 
 ## 良かった点
